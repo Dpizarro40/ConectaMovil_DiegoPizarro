@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="41dp"
+        android:layout_marginBottom="20dp"
+        android:text="Bienvenido a
+        ConectaMovil"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="342dp"
+        android:layout_height="377dp"
+        app:cardElevation="50dp"
+        app:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:layout_width="342dp"
+            android:layout_height="377dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="30dp"
+                android:text="Inicio de sesión"
+                android:textColor="@color/gray"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="330dp"
+                android:layout_height="70dp"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_icon_email"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="| Correo electrónico"
+                android:inputType="textEmailAddress"
+                android:paddingStart="23dp" />
+
+            <EditText
+                android:id="@+id/txtContrasenia"
+                android:layout_width="330dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_icon_lock"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="| Contraseña"
+                android:inputType="textPassword"
+                android:paddingStart="23dp" />
+
+            <Button
+                android:id="@+id/btnIniciarSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="58dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:text="Iniciar Sesión" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿No tienes una cuenta?"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/btnRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrarse"
+        android:layout_marginHorizontal="100dp"
+        />
+
+</LinearLayout>
