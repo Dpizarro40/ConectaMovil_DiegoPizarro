@@ -11,14 +11,21 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText nombre, email, contrasenia, repetirContrasenia;
     Button registrar, inicio;
     FirebaseAuth firebaseAuth;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-    private void registrarUsuario(String email, String contrasenia) {
+    private void registrarUsuario(String email, String contrasenia, final String nombre) {
         firebaseAuth.createUserWithEmailAndPassword(email, contrasenia)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -55,6 +62,10 @@ public class RegisterActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Registro exitoso
                             Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                            String userId = firebaseAuth.getCurrentUser().getUid();
+
+                            // Guardar información adicional en Realtime Database
+                            guardarInformacionAdicional(userId, nombre, email);
                             // Puedes agregar más lógica aquí, como redirigir a la pantalla de inicio de sesión
                         } else {
                             // Si el registro falla, muestra un mensaje al usuario.
@@ -84,7 +95,33 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         // Ahora puedes registrar al usuario
-        registrarUsuario(emailText, contraseniaText);
+        registrarUsuario(emailText, contraseniaText, nombreText);
     }
 
+    private void guardarInformacionAdicional(String userId, String nombre, String email) {
+        // Obtener la referencia a la base de datos
+        databaseReference = FirebaseDatabase.getInstance().getReference("Usuarios");
+
+        // Crear un mapa para almacenar la información del usuario
+        HashMap<String, Object> userInfo = new HashMap<>();
+        userInfo.put("nombre", nombre);
+        userInfo.put("email", email);
+
+        // Guardar la información del usuario en la base de datos
+        databaseReference.child(userId).setValue(userInfo)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Información adicional guardada con éxito
+                        Toast.makeText(RegisterActivity.this, "Información adicional guardada con éxito", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Error al guardar la información adicional
+                        Toast.makeText(RegisterActivity.this, "Error al guardar información adicional: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 }
