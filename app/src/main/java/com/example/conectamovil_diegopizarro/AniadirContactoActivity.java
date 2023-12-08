@@ -63,7 +63,7 @@ public class AniadirContactoActivity extends AppCompatActivity {
         databaseReference.child(contactoId).setValue(contactoInfo)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        //Información guardada con éxito
+                        //Información guardada con éxito.
                         Toast.makeText(AniadirContactoActivity.this, "Contacto guardado con éxito", Toast.LENGTH_SHORT).show();
                     } else {
                         //Si falla, muestra un mensaje al usuario.
