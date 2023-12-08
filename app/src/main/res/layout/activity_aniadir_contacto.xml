@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AniadirContactoActivity"
+    android:background="@drawable/bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Añadir contacto"
+            android:layout_margin="30dp"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            app:cardCornerRadius="25dp"
+            android:backgroundTint="#ACDAC3"
+            app:cardElevation="30dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp">
+
+                <EditText
+                    android:id="@+id/txtNombreContacto"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_icon_person"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="| Nombre completo"
+                    android:inputType="text"
+                    android:backgroundTint="#7040B346"
+                    android:paddingStart="15dp" />
+
+                <EditText
+                    android:id="@+id/txtEmailContacto"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginVertical="15dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_icon_email"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:backgroundTint="#7040B346"
+                    android:hint="| Email"
+                    android:inputType="text"
+                    android:paddingStart="15dp" />
+
+                <EditText
+                    android:id="@+id/txtNumeroContacto"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_icon_phone"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="| Número"
+                    android:backgroundTint="#7040B346"
+                    android:inputType="text"
+                    android:paddingStart="15dp" />
+
+                <Button
+                    android:id="@+id/btnGuardarContacto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guardar contacto"
+                    android:backgroundTint="#40B346"
+                    android:layout_marginTop="30dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

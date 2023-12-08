@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/bg">
 
     <TextView
         android:id="@+id/textView2"
@@ -22,6 +23,7 @@
         android:layout_width="390dp"
         android:layout_height="480dp"
         app:cardCornerRadius="30dp"
+        android:backgroundTint="#ACDAC3"
         app:cardElevation="40dp">
 
         <LinearLayout
@@ -51,6 +53,7 @@
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="| Nombre completo"
+                android:backgroundTint="#7040B346"
                 android:inputType="text"
                 android:paddingStart="23dp" />
 
@@ -64,6 +67,7 @@
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="| Correo electrónico"
+                android:backgroundTint="#7040B346"
                 android:inputType="textEmailAddress"
                 android:paddingStart="23dp" />
 
@@ -77,6 +81,7 @@
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="| Contraseña"
+                android:backgroundTint="#7040B346"
                 android:inputType="textPassword"
                 android:paddingStart="23dp" />
 
@@ -90,6 +95,7 @@
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="| Repetir contraseña"
+                android:backgroundTint="#7040B346"
                 android:inputType="textPassword"
                 android:paddingStart="23dp" />
 
@@ -98,6 +104,7 @@
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:backgroundTint="#40B346"
                 android:text="Registrar" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -114,5 +121,6 @@
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:backgroundTint="#40B346"
         android:text="Ir a iniciar sesión" />
 </LinearLayout>

@@ -67,6 +67,8 @@ public class RegisterActivity extends AppCompatActivity {
                             // Guardar información adicional en Realtime Database
                             guardarInformacionAdicional(userId, nombre, email);
                             // Puedes agregar más lógica aquí, como redirigir a la pantalla de inicio de sesión
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            startActivity(intent);
                         } else {
                             // Si el registro falla, muestra un mensaje al usuario.
                             Toast.makeText(RegisterActivity.this, "Error en el registro: " + task.getException(), Toast.LENGTH_SHORT).show();
@@ -100,28 +102,34 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void guardarInformacionAdicional(String userId, String nombre, String email) {
         // Obtener la referencia a la base de datos
-        databaseReference = FirebaseDatabase.getInstance().getReference("Usuarios");
+        if (userId != null) {
+            // Obtener la referencia a la base de datos
+            databaseReference = FirebaseDatabase.getInstance().getReference("Usuarios");
 
-        // Crear un mapa para almacenar la información del usuario
-        HashMap<String, Object> userInfo = new HashMap<>();
-        userInfo.put("nombre", nombre);
-        userInfo.put("email", email);
+            // Crear un mapa para almacenar la información del usuario
+            HashMap<String, Object> userInfo = new HashMap<>();
+            userInfo.put("nombre", nombre);
+            userInfo.put("email", email);
 
-        // Guardar la información del usuario en la base de datos
-        databaseReference.child(userId).setValue(userInfo)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Información adicional guardada con éxito
-                        Toast.makeText(RegisterActivity.this, "Información adicional guardada con éxito", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Error al guardar la información adicional
-                        Toast.makeText(RegisterActivity.this, "Error al guardar información adicional: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+            // Guardar la información del usuario en la base de datos
+            databaseReference.child(userId).setValue(userInfo)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            // Información adicional guardada con éxito
+                            Toast.makeText(RegisterActivity.this, "Información adicional guardada con éxito", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // Error al guardar la información adicional
+                            Toast.makeText(RegisterActivity.this, "Error al guardar información adicional: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        } else {
+            // Manejar el caso en el que el ID del usuario es nulo
+            Toast.makeText(RegisterActivity.this, "ID de usuario nulo", Toast.LENGTH_SHORT).show();
+        }
     }
 }
